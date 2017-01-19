@@ -44,8 +44,19 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	(function webpackMissingModule() { throw new Error("Cannot find module \".app/index.js\""); }());
+	module.exports = __webpack_require__(1);
 
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+	import App from './App';
+	import './index.css';
+
+	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
 /***/ }
 /******/ ]);
