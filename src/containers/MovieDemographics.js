@@ -6,6 +6,7 @@ var MovieDemographics = React.createClass({
   getInitialState(){
     return {
       ratings: undefined,
+      title: undefined,
       loading: true
     }
   },
@@ -18,6 +19,7 @@ var MovieDemographics = React.createClass({
       console.log(response);
       this.setState({
         ratings: response.data.ratings,
+        title: response.data.title
         loading: false
       })
       console.log(this.state, 'CURRENT STATE')
@@ -28,6 +30,7 @@ var MovieDemographics = React.createClass({
       return (
         <div>
         <p>DONE LOADING</p>
+        <h1>{this.state.title}</h1>
         <p>{JSON.stringify(this.state.ratings)}</p>
         {this.state.ratings.map((rating) => {
           return(
