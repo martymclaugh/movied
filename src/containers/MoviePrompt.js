@@ -28,12 +28,18 @@ var MoviePrompt = React.createClass({
     var movieYear = this.state.movieYear;
     this.setState({
       movieYear: '',
-      movieTitle: ''
+      movieTitle: '',
+      movieData: []
     })
-    console.log(helpers.omdbPing(movieTitle, movieYear))
     // make api call
-    // store picture, title, and id of movie
-    // go to movie preview
+    helpers.omdbTitlePing(movieTitle, movieYear).then(function(data){
+      this.setState({
+        movieData: data
+      })
+      // go to movie preview
+      this.context.router.push('/movie/' + this.state.movieData.imdbID)
+      console.log(this.state.movieData, 'info')
+    }.bind(this))
   },
   render(){
     return (
