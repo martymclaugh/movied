@@ -1,9 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var routes = require('./config/routes')
+// import App from './App';
+// import './index.css';
+
+var HelloWorld = React.createClass({
+  render(){
+    return (
+      <div>Hello {this.props.name}</div>
+    )
+  }
+})
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  // <App />,
+  routes,
+  document.getElementById('app')
 );
