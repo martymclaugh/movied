@@ -1,7 +1,11 @@
 var React = require('react');
-var transparentBg = require('../styles').transparentBg
+var transparentBg = require('../styles').transparentBg;
+var helpers = require('../utils/helpers');
 
 var MoviePrompt = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState(){
     return {
       movieTitle: '',
@@ -12,20 +16,31 @@ var MoviePrompt = React.createClass({
     this.setState({
       movieTitle: e.target.value
     })
-    console.log(this.state);
   },
   onUpdateMovieYear(e){
     this.setState({
       movieYear: e.target.value
     })
-    console.log(this.state)
+  },
+  onSubmitMovie(e){
+    e.preventDefault();
+    var movieTitle = this.state.movieTitle.split(' ').join('+');
+    var movieYear = this.state.movieYear;
+    this.setState({
+      movieYear: '',
+      movieTitle: ''
+    })
+    console.log(helpers.omdbPing(movieTitle, movieYear))
+    // make api call
+    // store picture, title, and id of movie
+    // go to movie preview
   },
   render(){
     return (
       <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
         <h1>Enter Desired Movie</h1>
         <div className="col-sm-12">
-          <form >
+          <form onSubmit={this.onSubmitMovie}>
             <div className="form-group">
               <input
                 type="text"
