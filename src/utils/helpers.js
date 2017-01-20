@@ -5,7 +5,15 @@ function omdbData(response){
 }
 
 var helpers = {
-  omdbPing: function (movieTitle, movieYear){
+  omdbIdPing: function(id){
+    var url = "http://www.omdbapi.com/?i=" + id + "&plot=full&r=json"
+    console.log(url)
+    return axios.get(url).then(response => {
+      console.log(response.data)
+      return(response.data)
+    })
+  },
+  omdbTitlePing: function (movieTitle, movieYear){
     console.log(movieTitle);
     console.log(movieYear);
     if(movieYear.length > 0){
