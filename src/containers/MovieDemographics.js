@@ -1,4 +1,5 @@
 var React = require('react');
+var helpers = require('../utils/helpers');
 
 var MovieDemographics = React.createClass({
   getInitialState(){
@@ -6,9 +7,19 @@ var MovieDemographics = React.createClass({
       ratings: []
     }
   },
+  componentWillMount(){
+    var imdbID = this.props.routeParams.movieID
+    console.log(imdbID)
+    helpers.imdbScrape(imdbID).then(function(data){
+      this.setState({
+        ratings: data
+      })
+      console.log(this.state)
+    }.bind(this))
+  },
   render(){
     return (
-      <div>Demographics</div>
+      <div>{this.state.ratings}</div>
     )
   }
 })
