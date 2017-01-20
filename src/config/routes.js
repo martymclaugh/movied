@@ -8,6 +8,8 @@ var Main = require('../components/Main');
 var Home = require('../components/Home');
 var MoviePrompt = require('../containers/MoviePrompt');
 var MoviePreview = require('../containers/MoviePreview');
+var MovieDemographics = require('../containers/MovieDemographics');
+
 
 var routes = (
   <Router history={hashHistory}>
@@ -15,6 +17,7 @@ var routes = (
       <IndexRoute component={Home}/>
       <Route path='/search' component={MoviePrompt}/>
       <Route path='/movie/:movieID' component={MoviePreview}/>
+      <Route path='/movie/:movieID/ratings' component={MovieDemographics}/>
     </Route>
   </Router>
 );
