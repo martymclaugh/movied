@@ -17,7 +17,6 @@ var MoviePrompt = React.createClass({
       this.setState({
         movieData: data
       })
-      console.log(this.state)
     }.bind(this))
   },
   render(){
