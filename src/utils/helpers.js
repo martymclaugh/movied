@@ -41,23 +41,12 @@ var helpers = {
     }
   },
   imdbScrape: function(id){
-    var config = {
-      headers: {"Access-Control-Allow-Origin": "*"}
-    }
-    url = 'http://www.imdb.com/title/' + id + '/ratings';
+    var url = 'https://informationextractor.herokuapp.com/scrape/' + id
     console.log(url)
     axios.get(url).then(function(response){
-      if(response.status >= 200 && response.status < 300){
-        var $ = cheerio.load(response.data);
-        var title, release, rating;
-        var json = {};
-        var ratings = $('#tn15content').text();
-        var title = $('.main').text();
-      }
-      json.title = title;
-      json.ratings = parseRatingsResponse(ratings);
-      return json;
-  })
+      console.log(response);
+      return response;
+    })
   }
 }
 
