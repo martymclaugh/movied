@@ -13,7 +13,6 @@ var MoviePrompt = React.createClass({
   },
   componentWillMount(){
     var imdbID = this.props.routeParams.movieID
-    console.log(imdbID, 'id')
     helpers.omdbIdPing(imdbID).then(function(data){
       this.setState({
         movieData: data
