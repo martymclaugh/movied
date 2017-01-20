@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var routes = require('./config/routes')
 // import App from './App';
 // import './index.css';
 
@@ -13,6 +14,6 @@ var HelloWorld = React.createClass({
 
 ReactDOM.render(
   // <App />,
-  <HelloWorld name="SHAZAM"/>,
+  routes,
   document.getElementById('app')
 );
