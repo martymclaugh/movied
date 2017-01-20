@@ -8,11 +8,17 @@ var MoviePrompt = React.createClass({
       movieYear: ''
     }
   },
-  function onUpdateMovieTitle(e){
-
+  onUpdateMovieTitle(e){
+    this.setState({
+      movieTitle: e.target.value
+    })
+    console.log(this.state);
   },
-  function onUpdateMovieYear(e){
-
+  onUpdateMovieYear(e){
+    this.setState({
+      movieYear: e.target.value
+    })
+    console.log(this.state)
   },
   render(){
     return (
