@@ -1,6 +1,7 @@
 var React = require('react');
 var helpers = require('../utils/helpers');
 var axios = require('axios');
+var MovieGraph = require('../components/MovieGraph');
 
 var MovieDemographics = React.createClass({
   getInitialState(){
@@ -19,7 +20,7 @@ var MovieDemographics = React.createClass({
       console.log(response);
       this.setState({
         ratings: response.data.ratings,
-        title: response.data.title
+        title: response.data.title,
         loading: false
       })
       console.log(this.state, 'CURRENT STATE')
@@ -31,6 +32,8 @@ var MovieDemographics = React.createClass({
         <div>
         <p>DONE LOADING</p>
         <h1>{this.state.title}</h1>
+        <MovieGraph
+        data={this.state.ratings}/>
         <p>{JSON.stringify(this.state.ratings)}</p>
         {this.state.ratings.map((rating) => {
           return(
